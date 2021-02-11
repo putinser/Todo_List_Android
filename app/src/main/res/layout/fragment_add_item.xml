@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clipToPadding="false"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".ui.add.AddItemFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_above="@id/save_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:padding="@dimen/margin_16"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:hint="@string/add_item_edit_text_hint"
+                android:id="@+id/to_do_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </FrameLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:layout_margin="@dimen/margin_16"
+        android:layout_alignParentBottom="true"
+        android:text="@string/add_item_button"
+        android:id="@+id/save_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom" />
+
+</RelativeLayout>

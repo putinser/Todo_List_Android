@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+
+    <string name="add_item_edit_text_hint">Введите задачу</string>
+    <string name="add_item_button">Сохранить</string>
+    <string name="add_item_error_empty_text">@string/add_item_edit_text_hint</string>
+
+</resources>
