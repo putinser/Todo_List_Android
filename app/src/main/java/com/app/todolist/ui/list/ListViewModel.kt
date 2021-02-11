@@ -6,15 +6,15 @@ import com.app.todolist.di.DaggerUtils
 
 class ListViewModel : ViewModel() {
 
-    private val toDoRepository = DaggerUtils.appComponent.provideToDoRepository()
+    private val toDoInteractor = DaggerUtils.appComponent.provideToDoInteractor()
 
-    fun getToDoLiveData() = toDoRepository.getToDoLiveData()
+    fun getToDoLiveData() = toDoInteractor.getToDoLiveData()
 
     fun update(toDoItem: ToDoItem) {
-        toDoRepository.update(toDoItem)
+        toDoInteractor.update(toDoItem)
     }
 
     fun remove(toDoItem: ToDoItem, position: Int) {
-        toDoRepository.remove(toDoItem, position)
+        toDoInteractor.remove(toDoItem, position)
     }
 }

@@ -7,9 +7,9 @@ interface IToDoRepository {
 
     fun getToDoLiveData(): MutableLiveData<List<ToDoItem>>
 
-    fun addItem(toDoItem: ToDoItem)
+    suspend fun addItem(toDoItem: ToDoItem)
 
-    fun update(toDoItem: ToDoItem)
+    suspend fun update(toDoItem: ToDoItem)
 
-    fun remove(toDoItem: ToDoItem, position: Int)
+    suspend fun remove(toDoItem: ToDoItem, position: Int)
 }

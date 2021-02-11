@@ -15,6 +15,7 @@ object DaggerUtils {
     }
 
     private fun buildAppComponent(context: Context) = DaggerAppComponent.builder()
+        .appModule(AppModule())
         .roomModule(RoomModule(context))
         .repositoryModule(RepositoryModule())
         .build()

@@ -6,10 +6,10 @@ import com.app.todolist.di.DaggerUtils
 
 class AddItemViewModel : ViewModel() {
 
-    private val toDoRepository = DaggerUtils.appComponent.provideToDoRepository()
+    private val toDoInteractor = DaggerUtils.appComponent.provideToDoInteractor()
 
     fun save(text: String) {
-        toDoRepository.addItem(ToDoItem(text))
+        toDoInteractor.addItem(ToDoItem(text))
     }
 
 }

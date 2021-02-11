@@ -30,27 +30,23 @@ class ToDoRepository : IToDoRepository {
         return toDoListLiveData
     }
 
-    override fun addItem(toDoItem: ToDoItem) {
-        scope.launch {
-            toDoItem.id = toDoDao.getIdForRowId(toDoDao.insert(toDoItem))
-            (toDoListLiveData.value as? ArrayList)?.add(toDoItem)
-            withContext(Dispatchers.Main) {
-                toDoListLiveData.notifyObserver()
-            }
+    override suspend fun addItem(toDoItem: ToDoItem) {
+        toDoItem.id = toDoDao.getIdForRowId(toDoDao.insert(toDoItem))
+        (toDoListLiveData.value as? ArrayList)?.add(toDoItem)
+        withContext(Dispatchers.Main) {
+            toDoListLiveData.notifyObserver()
         }
     }
 
-    override fun update(toDoItem: ToDoItem) {
-        scope.launch {
-            toDoDao.update(toDoItem)
-        }
+    override suspend fun update(toDoItem: ToDoItem) {
+        toDoDao.update(toDoItem)
     }
 
-    override fun remove(toDoItem: ToDoItem, position: Int) {
-        scope.launch {
-            toDoDao.delete(toDoItem)
+    override suspend fun remove(toDoItem: ToDoItem, position: Int) {
+        toDoDao.delete(toDoItem)
+        withContext(Dispatchers.Main) {
+            (toDoListLiveData.value as? ArrayList)?.removeAt(position)
+            toDoListLiveData.notifyObserver()
         }
-        (toDoListLiveData.value as? ArrayList)?.removeAt(position)
-        toDoListLiveData.notifyObserver()
     }
 }
